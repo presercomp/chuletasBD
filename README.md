@@ -166,6 +166,9 @@ INSERT INTO facturas VALUES
 ```
 
 ## Edición de datos
+
+> **Advertencia:** El uso inadecuado de la condición where, puede provocar resultados indeseados.
+
 ### Mala practica:
 ```
 UPDATE facturas SET rut_cliente = '20718765-8';
@@ -173,4 +176,18 @@ UPDATE facturas SET rut_cliente = '20718765-8';
 ### Buena practica:
 ```
 UPDATE facturas SET rut_cliente = '20904725-K' WHERE num_factura = 1;
+```
+
+## Eliminación de datos
+
+> **Advertencia:** El uso inadecuado de la condición where, puede provocar resultados indeseados.
+
+
+### Mala practica:
+```
+DELETE FROM facturas;
+```
+### Buena practica:
+```
+DELETE FROM facturas WHERE num_factura = 1;
 ```
