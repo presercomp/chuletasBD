@@ -106,6 +106,30 @@ CREATE TABLE facturas (
 );
 ```
 
+## Despliegue de datos
+
+### Mostrar todas las columnas de la tabla
+```
+SELECT * FROM facturas;
+```
+### Mostrar algunas columnas de la tabla
+```
+SELECT num_factura, nombre_cliente, monto FROM facturas;
+```
+### Mostrar algunos datos de la tabla usando filtros
+```
+SELECT * FROM facturas WHERE ...
+```
+**OJO: Deberá usar elementos de comparación según tipo de datos**
+| Operador | Descripcion | Tipo de dato aplicable |
+| ---- | ---- | ---- | 
+| =  | Compara que dos elementos sean iguales | Todos | 
+| >  | Compara si el primer elemento es mayor que el segundo | Numéricos |
+| >= | Compara si el primer elemento es mayor o igual que el segundo | Numéricos |
+| <  | Compara si el primer elemento es menor que el segundo | Numéricos |
+| <= | Compara si el primer elemento es menor o igual que el segundo | Numéricos |
+| != | Compara que dos elementos sean iguales | Todos |
+
 ## Inserción de datos
 
 ### Insertar datos en todas las columnas, sin definirlas
@@ -130,15 +154,7 @@ INSERT INTO facturas VALUES
 (6, '2020-10-06', '20.718.737-2', 'Anastassia Belen Araya Rojas', 295990.0);
 ```
 
-## Mostrar todas las columnas de la tabla
-```
-SELECT * FROM facturas;
-```
-## Mostrar algunas columnas de la tabla
-```
-SELECT num_factura, nombre_cliente, monto FROM facturas;
-```
-## EDICION DE DATOS EN UNA TABLA
+## Edición de datos
 ### Mala practica:
 ```
 UPDATE facturas SET rut_cliente = '20718765-8';
