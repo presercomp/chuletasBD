@@ -123,6 +123,7 @@ SELECT * FROM facturas WHERE [campo][Operador comparación][valor]
 
 **Observaciones:** 
 1. Deberá usar elementos de comparación según tipo de datos
+
 | Operador | Descripcion | Tipo de dato aplicable |
 | ---- | ---- | ---- | 
 | =  | Compara que dos elementos sean iguales | Todos | 
@@ -136,6 +137,7 @@ SELECT * FROM facturas WHERE [campo][Operador comparación][valor]
 ```
 SELECT * FROM facturas WHERE rut = '20904725-K';
 ```
+
 3. Si se desea filtrar por 2 o más columnas, deberá usar los operadores de anidacion (AND / OR) 
 
 
