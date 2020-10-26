@@ -120,14 +120,9 @@ SELECT num_factura, nombre_cliente, monto FROM facturas;
 ```
 SELECT * FROM facturas WHERE [campo][Operador comparación][valor]
 ```
-```
-SELECT * FROM facturas WHERE rut = '20904725-K';
-```
+
 **Observaciones:** 
 1. Deberá usar elementos de comparación según tipo de datos
-2. Los valores para campos de tipo CHAR, VARCHAR, DATE siempre debe ir entre comillas simples ' '
-3. Si se desea filtrar por 2 o más columnas, deberá usar los operadores de anidacion (AND / OR) 
-
 | Operador | Descripcion | Tipo de dato aplicable |
 | ---- | ---- | ---- | 
 | =  | Compara que dos elementos sean iguales | Todos | 
@@ -136,6 +131,13 @@ SELECT * FROM facturas WHERE rut = '20904725-K';
 | <  | Compara si el primer elemento es menor que el segundo | Numéricos |
 | <= | Compara si el primer elemento es menor o igual que el segundo | Numéricos |
 | != | Compara que dos elementos sean iguales | Todos |
+
+2. Los valores para campos de tipo CHAR, VARCHAR, DATE siempre debe ir entre comillas simples ' '
+```
+SELECT * FROM facturas WHERE rut = '20904725-K';
+```
+3. Si se desea filtrar por 2 o más columnas, deberá usar los operadores de anidacion (AND / OR) 
+
 
 ## Inserción de datos
 
