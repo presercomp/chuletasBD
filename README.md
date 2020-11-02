@@ -68,6 +68,7 @@ describe [nombreTabla];
 ```
 drop table [nombreTabla];
 ```
+
 ## Conocer el contenido de una tabla.
 ```
 SELECT * FROM [nombreTabla]
