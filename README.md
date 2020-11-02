@@ -192,3 +192,47 @@ DELETE FROM facturas;
 ```
 DELETE FROM facturas WHERE num_factura = 1;
 ```
+
+### Usando campos autonuméricos
+Los campos autonuméricos, permiten que se vaya sumando +1 por cada nueva fila que vayamos insertando en la tabla.
+Para esto, en la consturcción de la tabla, usaremos la característica Autoincrement
+```
+CREATE TABLE facturas_detalle (
+	num_detalle     bigint       not null  AUTO_INCREMENT,
+	num_factura     int          not null,
+	cantidad        int          not null,
+	producto        varchar(10)  not null,
+	unitario        double       not null,
+	PRIMARY KEY (num_detalle)
+);
+```
+## Operaciones en las tablas de una bases de datos
+### Uso de Alias para columnas
+Nos permite renombrar temporalmente el nombre de una columna, para la ejecución del código de consulta, utilizando el parametro **AS**
+Cuando el nombre que queremos asignar, no usa espacios ni caracteres especiales, se escribe de forma directa.
+```
+SELECT nombre_cliente AS cliente FROM facturas;
+```
+
+Si el nombre que queremos asignar, es compuesto por espacios u otros elementos, es mejor envolverlo con comillas simples
+```
+SELECT producto AS 'nombre producto' FROM facturas_detalle;
+```
+### Contar el número de registros de una tabla
+La función COUNT de MySQL nos permite contar la cantidad de registros que existen en una tabla.
+Es posible combinarlo con la condicional WHERE para obtener resultados diferentes.
+Esta funcion, nos entregará un único campo con el resultado.
+```
+SELECT COUNT(*) FROM facturas_detalle;
+```
+
+### Sumar todos los registro de una columna
+La función SUM de MySQL nos permite sumar todos los valores de una columna, siempre que ésta se de tipo numérico.
+Es posible, según la necesidad, unir la función, con una condicional (clausula WHERE)
+Esta funcion, nos entregará un único campo con el resultado.
+```
+SELECT SUM(unitario) FROM facturas_detalle;
+```
+
+
+
