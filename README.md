@@ -234,5 +234,45 @@ Esta funcion, nos entregará un único campo con el resultado.
 SELECT SUM(unitario) FROM facturas_detalle;
 ```
 
+## Relaciones, restricciones y claves foraneas
+Una clave foranea (también conocida como clave ajena, clave extranjera o clave externa), permite relacionar la tabla
+que contiene dicha clave foranea, con otra tabla por medio de su(s) clave(s) primaria(s).
+Para poder crear una clave foranea, es necesario formular restricciones mediante cardinalidad:
+
+- 1:1 Permite relacionar 1 registro de la tabla padre con 1 registro de la tabla hijo de manera única e irrepetible.
+- 1:N Un registro de la tabla padre, estará presente en varios registros de la tabla hijo.
+- N:M Varios registros de la tabla padre, estarán vinculados a varios registros de la tabla hijo.
+
+## Codificación:
+Tabla Padre: Creamos una tabla de dos columnas, la primera (pk_col), representará a la clave primaria de la tabla.
+```
+CREATE TABLE padre (
+	pk_col BIGINT UNSIGNED NOT NULL,
+	dt_col VARCHAR(40) NOT NULL,
+	PRIMARY KEY (pk_col)
+);
+```
+
+Tabla Hijo: Creamos una tabla de 3 columnas, la primera (id_col), representará a la clave primaria de la tabla, mientras que
+pk_col será la clave foranea, relacionada con la tabla padre. Para realizar la relacion, debemos crear un índice (Index), que
+por convención, su nombre será compuesto de las siglas "fk" seguido del nombre de la tabla hijo, luego el nombre de la tabla padre
+y finalizado con la sigla "idx", cada uno separado por guiones bajos. A pesar de que se le puede dar cualquier nombre, se sugiere
+seguir la convención.
+También es neceario crear la restricción (Constraint), donde se establece el campo que se usara como clave forenea, la referencia
+a la tabla y campo padre y las acciones al borrar el registro y actualizar el registro. Su nombre será escrito, según convensión por la sigla "fk" seguidos de el nombre de la hijo, la tabla padre y separados por guiones bajos. Igual que el índice, puede ser usado cualquier otro nombre, pero se sugiere seguir la convensión.
+```
+CREATE TABLE hijo (
+	id_col BIGINT UNSIGNED NOT NULL,
+	pk_col BIGINT UNSIGNED NOT NULL,
+	dt_col VARCHAR(40) NOT NULL,
+	PRIMARY KEY (id_col),
+	INDEX fk_hijo_padre_id (pk_col ASC),
+	CONSTRAINT fk_hijo_padre 
+		FOREIGN KEY (pk_col)
+		REFERENCES padre(pk_col)
+		ON DELETE NO ACTION
+		ON UPDATE NO ACTION
+);
+```
 
 
